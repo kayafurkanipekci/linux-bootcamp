@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Linux Bootcamp Hazırlık Rehberi</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #00adb5;
+            --code-bg: #2c2c2c;
+            --win-color: #0078d7;
+            --mac-color: #999;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 0;
+        }
+
+        .step {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-win { background-color: var(--win-color); color: white; }
+        .badge-mac { background-color: var(--mac-color); color: white; }
+        .badge-vscode { background-color: #23a8f2; color: white; }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #444;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .important-note {
+            background-color: rgba(0, 173, 181, 0.1);
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9em;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>NEXUS Linux Bootcamp</h1>
+            <p>Kurulum ve Hazırlık Rehberi</p>
+        </header>
+
+        <div class="section">
+            <span class="badge badge-win">Windows</span>
+            <h2>Bölüm 1: WSL (Linux Altyapısı) Kurulumu</h2>
+            
+            <div class="step">
+                <h3>Adım 1: Windows Özelliklerini Açma</h3>
+                <p>Başlat menüsünü açın ve aramaya şunları yazın:</p>
+                <ul>
+                    <li>Türkçe: <strong>Windows özelliklerini aç veya kapat</strong></li>
+                    <li>İngilizce: <strong>Turn Windows features on or off</strong></li>
+                </ul>
+                <img src="images/win-features-1.png" alt="Windows Özellikleri Arama">
+            </div>
+
+            <div class="step">
+                <h3>Adım 2: WSL'i Aktif Etme</h3>
+                <p>Açılan listede aşağılara inin ve <strong>"Linux için Windows Alt Sistemi" (Windows Subsystem for Linux)</strong> seçeneğini bulun.</p>
+                <p>Yanındaki kutucuğu işaretleyin ve "Tamam"a basın.</p>
+                <img src="images/win-features-2.png" alt="WSL Seçimi">
+            </div>
+
+            <div class="step">
+                <h3>Adım 3: Ubuntu İndirme</h3>
+                <p>Bilgisayarınızı yeniden başlattıktan sonra <strong>Microsoft Store</strong>'u açın. Arama kısmına <strong>"Ubuntu 22.04.3 LTS"</strong> yazın ve "Al" veya "Yükle" butonuna basın.</p>
+                <img src="images/store-ubuntu.png" alt="Microsoft Store Ubuntu">
+            </div>
+
+            <div class="step">
+                <h3>Adım 4: Kullanıcı Kurulumu</h3>
+                <p>İndirme bitince Ubuntu'yu başlatın. Siyah bir terminal ekranı açılacak ve kurulum yapacaktır. Bittikten sonra sizden bir <strong>Kullanıcı Adı (username)</strong> ve <strong>Şifre (password)</strong> isteyecektir.</p>
+                <div class="important-note">
+                    Not: Şifrenizi yazarken ekranda harfler görünmez, bu normaldir. Yazıp Enter'a basın.
+                </div>
+                <img src="images/ubuntu-setup.png" alt="Ubuntu Kullanıcı Ayarları">
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="badge badge-vscode">Editör</span>
+            <h2>Bölüm 2: Visual Studio Code Kurulumu</h2>
+            <p>Eğer bilgisayarınızda VS Code yüklü değilse aşağıdaki adımları takip edin.</p>
+
+            <div class="step">
+                <h3>Adım 1: İndirme</h3>
+                <p><a href="https://code.visualstudio.com/Download" target="_blank">Buraya tıklayarak</a> resmi sitesine gidin ve işletim sisteminize uygun (Windows) versiyonu indirin.</p>
+                <img src="images/vscode-site.png" alt="VS Code İndirme Sayfası">
+            </div>
+
+            <div class="step">
+                <h3>Adım 2: Lisans Anlaşması</h3>
+                <p>İndirdiğiniz dosyayı açın. Lisans anlaşmasını kabul edip "Next" (İleri) diyerek devam edin.</p>
+                <img src="images/vscode-install-1.png" alt="Lisans Anlaşması">
+            </div>
+
+            <div class="step">
+                <h3>Adım 3: Kurulum Dizini</h3>
+                <p>Kurulum yerini değiştirmeden varsayılan haliyle "Next" diyerek devam edin.</p>
+                <img src="images/vscode-install-2.png" alt="Kurulum Yeri">
+            </div>
+
+            <div class="step">
+                <h3>Adım 4: Başlat Menüsü</h3>
+                <p>Başlat menüsü klasörü oluşturma ekranını da "Next" diyerek geçebilirsiniz.</p>
+                <img src="images/vscode-install-3.png" alt="Başlat Menüsü Ayarı">
+            </div>
+
+            <div class="step">
+                <h3>Adım 5: Ek Seçenekler (Çok Önemli!)</h3>
+                <p>Bu ekranda, kullanım kolaylığı için <strong>tüm kutucukları işaretlemenizi</strong> öneriyoruz.</p>
+                <ul>
+                    <li>Masaüstü kısayolu oluştur (İsteğe bağlı)</li>
+                    <li><strong>"Code ile Aç" (Open with Code)</strong> seçenekleri: Dosya ve klasörlere sağ tıkladığınızda VS Code ile açmanızı sağlar.</li>
+                    <li><strong>PATH'e ekle (Add to PATH):</strong> Terminalden kod yazarak VS Code'u açmak için zorunludur.</li>
+                </ul>
+                <img src="images/vscode-install-4.png" alt="VS Code Ek Seçenekler">
+            </div>
+
+            <div class="step">
+                <h3>Adım 6: Kurulumu Tamamlama</h3>
+                <p>"Install" butonuna basarak kurulumu başlatın ve bittiğinde "Finish" diyerek kapatın.</p>
+                <img src="images/vscode-install-5.png" alt="Install Butonu">
+                <br>
+                <img src="images/vscode-install-6.png" alt="Finish Ekranı">
+            </div>
