@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS Linux Bootcamp Hazırlık Rehberi</title>
-    <title>Windows kullanıcıları Mavi başlıklı adımları takip edebilir. MacOS kullanıcıları Wİndwos adımlarından sonraki Gri başlıktan devam edebilir</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -13,7 +11,15 @@
             --accent-color: #00adb5;
             --code-bg: #2c2c2c;
             --win-color: #0078d7;
-            --mac-color: #999;
+            --mac-color: #0daf1d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h2 {
+            scroll-margin-top: 95px;
         }
 
         body {
@@ -131,11 +137,21 @@
         <header>
             <h1>NEXUS Linux Bootcamp</h1>
             <p>Kurulum ve Hazırlık Rehberi</p>
+            <div class="platform-select">
+            <p>Platformunuzu seçin:</p>
+            <a href="#wsl-kurulumu" style="color: var(--win-color); text-decoration: none;">
+                <span class="badge badge-win">Windows</span>
+            </a>
+            <a href="#mac-ayarlari" style="color: var(--mac-color); text-decoration: none;">
+                <span class="badge badge-mac">macOS</span>
+            </a>
+        </div>
         </header>
 
         <div class="section">
             <span class="badge badge-win">Windows</span>
-            <h2>Bölüm 1: WSL Kurulumu</h2>
+            <h2></h2>
+            <h2 id="wsl-kurulumu">Bölüm 1: WSL Kurulumu</h2>
             
             <div class="step">
                 <h3>Adım 1: Windows Özelliklerini Açma</h3>
@@ -226,7 +242,8 @@
 
         <div class="section">
             <span class="badge badge-mac">macOS</span>
-            <h2>Bölüm 3: Mac Kullanıcıları İçin Ayarlar</h2>
+            <h2></h2>
+            <h2 id="mac-ayarlari">Bölüm 3: Mac Kullanıcıları İçin Ayarlar</h2>
             <p>Bootcamp sırasında dosya transferi yapabilmek için aşağıdaki ayarları açmanız gerekmektedir.</p>
 
             <div class="step">
@@ -247,8 +264,8 @@
         </div>
 
         <footer>
-            <p><strong>NEXUS Software Development Community</strong></p>
-            <p>Rafet Kayış Mühendislik Fakültesi - LAB408</p>
+            <p><strong>NEXUS Yazılım Geliştirme Ekibi</strong></p>
+            <p>Alanya Alaaddin Keykubat Üniversitesi</p>
             <p><small>Sorularınız için topluluk grubundan yazabilirsiniz.</small></p>
         </footer>
     </div>
