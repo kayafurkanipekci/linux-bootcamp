@@ -1,2 +1,2 @@
-# github-bootcamp
-for Nexus github bootcamp
+# Linux-bootcamp
+for Nexus Linux bootcamp
