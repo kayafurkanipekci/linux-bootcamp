@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Bootcamp Rehberi</title>
+    <style>
+        :root {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --accent: #0078d7;
+            --code-bg: #2a2a2a;
+            --border: #333;
+            --note-text: #ffbf00;
+
+
+            --win-color: #0078d7;  /* Windows Mavisi */
+            --mac-color: #0daf1d;  /* Mac Yeşili */
+            --wsl-color: #72216f;  /* Ubuntu Bordosu */
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 15px;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        h1 { color: var(--accent); text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 40px; font-size: 1.4em; }
+        h3 { color: #fff; margin-top: 25px; font-size: 1.1em; }
+        
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Tablolar */
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background-color: #333; color: var(--accent); }
+        tr:nth-child(even) { background-color: #252525; }
+
+        /* Kod Blokları */
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            color: #a5d6ff;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid var(--border);
+        }
+
+
+        /* Listeler */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
+
+        /* Açılır Kapanır Notlar (Senin Yorumların İçin) */
+        details {
+            margin-top: 15px;
+            background-color: #252525;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+        summary {
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--note-text);
+            list-style: none;
+            outline: none;
+        }
+        summary:hover { background-color: #333; }
+        .note-content {
+            padding: 15px;
+            border-top: 1px solid #444;
+            background-color: #1a1a1a;
+            color: #ddd;
+            font-size: 0.95em;
+        }
+        /* Chrome default marker gizleme */
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; float: right; font-weight: bold; }
+        details[open] summary::after { content: '-'; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Linux Bootcamp Rehberi</h1>
+
+    <div class="card">
+        <h2>Günün Akışı</h2>
+        <table>
+            <tr><th>Saat</th><th>Konu</th></tr>
+            <tr><td>13:30-13:45</td><td>Açılış & Tanıtım</td></tr>
+            <tr><td>13:45-14:30</td><td>Linux Temelleri ve Dosya Sistemi</td></tr>
+            <tr><td>14:30-14:40</td><td>Ara</td></tr>
+            <tr><td>14:40-15:20</td><td>İzinler, Paket Yönetimi ve SSH Temelleri</td></tr>
+            <tr><td>15:20-15:30</td><td>Ara</td></tr>
+            <tr><td>15:30-16:30</td><td>Dosya Transferi (scp ve rsync)</td></tr>
+            <tr><td>16:00-16:10</td><td>Ara</td></tr>
+            <tr><td>16:10-16:50</td><td>Mini Proje: Zenity ile Dosya Transfer uygulaması</td></tr>
+            <tr><td>16:50-17:00</td><td>Kapanış & Soru-Cevap</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Açılış ve Tanıtım</h2>
+        <p><strong>Linux Nedir?</strong></p>
+        <p>UNIX benzeri, açık kaynaklı, çekirdeği serbest olan bir işletim sistemidir.</p>
+        <p><strong>Peki UNIX nedir?</strong></p>
+        <p>Masaüstünde kullanılabilir ama esas gücü sunucu, IoT, bulut, siber güvenlik, embedded sistemlerdedir.</p>
+
+
+        <h3>Linux ve Windows Arasındaki Temel Farklar</h3>
+        <table>
+            <tr><th>Linux</th><th>Windows</th></tr>
+            <tr><td>Terminal ağırlıklı</td><td>Grafiksel arayüz (GUI) ağırlıklı</td></tr>
+            <tr><td>Açık kaynak</td><td>Kapalı sistem</td></tr>
+            <tr><td>Çok çekirdekli gelişim</td><td>Microsoft kontrolünde</td></tr>
+            <tr><td>Sunucu dostu</td><td>Masaüstü dostu</td></tr>
+            <tr><td>Ücretsiz</td><td>Lisans Gerekli</td></tr>
+        </table>
+
+        <h3>Nerelerde Kullanılıyor?</h3>
+        <ul>
+            <li>Web sunucuları (Apache, Nginx)</li>
+            <li>Android işletim sistemi (çekirdeği Linux)</li>
+            <li>Siber güvenlik (Kali Linux, Parrot OS)</li>
+            <li>Raspberry Pi, Jetson gibi gömülü sistemler</li>
+            <li>DevOps araçları (Docker, Kubernetes, Jenkins)</li>
+            <li>Bilimsel araştırmalar ve süper bilgisayarlar</li>
+        </ul>
+
+        <h3>Neden Linux Öğrenmeliyiz?</h3>
+        <ul>
+            <li>Yazılımcı/sistem yöneticisi için vazgeçilmez temel</li>
+            <li>Otomasyon, scripting ve sistem yönetimi becerisi kazandırır</li>
+            <li>Gerçek bir dosya sistemi ile çalışma deneyimi sunar</li>
+            <li>Açık kaynak dünyasına katkı için temel oluşturur</li>
+            <li>CV’yi güçlendirir, teknik mülakatlarda avantaj sağlar</li>
+        </ul>
+
+        <h3>Bugün Neler Öğreneceğiz?</h3>
+        <ul>
+            <li>Linux terminalini aktif kullanmak</li>
+            <li>Dosya sistemi yapısı ve temel komutlar</li>
+            <li>İzinler ve kullanıcı rolleri</li>
+            <li>Paket yönetimi ve yazılım yükleme</li>
+            <li>SSH kullanımı ve dosya transferi</li>
+            <li>Basit bir GUI uygulaması geliştirme (yetişirse)</li>
+        </ul>
+    </div>
+
+        <h3>Linux Dağıtımları (Distrolar)</h3>
+        <p>Linux, özünde açık kaynaklı ve serbest bir işletim sistemi çekirdeğidir. Farklı topluluklar veya şirketler,
+bu çekirdeği temel alarak üzerine çeşitli masaüstü ortamları, sistem yazılımları ve paket yöneticileri
+ekleyerek kendi işletim sistemi paketlerini oluştururlar. Kullanıma hazır bu işletim sistemlerine
+Dağıtım (Distro) denir</p>
+            <p><strong>Bazı Dağıtım Örnekleri ve Alanları</strong></p>
+            <ul>
+                <li><strong>Siber Güvenlik Dağıtımları:</strong> Linux'un siber güvenlik alanındaki gücünü gösteren, bu alana özel
+araçlarla donatılmış<strong> Kali Linux</strong> ve <strong>Parrot OS</strong> gibi dağıtımlar bulunur.</li>
+                <li><strong>Debian/Ubuntu Tabanlı Dağıtımlar:</strong> Bootcamp'in ilerleyen kısımlarında göreceğimiz paket
+yönetimi komutları <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">(sudo apt update, sudo apt install vb.)</span>, özellikle <strong>Debian</strong> ve
+<strong>Ubuntu</strong> gibi yaygın dağıtımlarda kullanılan sistemlerdir.</li>
+                <li><strong>Gömülü Sistemler ve Sunucular:</strong> <strong>Raspberry Pi</strong> ve <strong>Jetson</strong> gibi gömülü sistemler veya web
+sunucuları gibi özel alanlar için genellikle o alana yönelik optimize edilmiş farklı dağıtımlar
+kullanılır.</li>
+                <li><strong>Arch Linux (Sıkıntılı İnsanların Kullandığı Distro):</strong> Arch Linux gibi dağıtımlar, kullanıcıya tam kontrol
+sunan minimalist bir yaklaşım benimser. Kullanıcılar, temel bir sistem üzerine yalnızca ihtiyaç
+duydukları bileşenleri kurar. Paket yönetimi için <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">apt</span> yerine <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">pacman</span> kullanır ve "rolling release"
+(sürekli güncelleme) modeliyle her zaman en güncel yazılımlara erişim sağlar.</li>
+            </ul>
+
+
+    <div class="card">
+        <h2>Linux Temelleri</h2>
+        <p><strong>Terminal Nedir?</strong></p>
+        <ul>
+            <li><strong>CLI:</strong> Command Line Interface.</li>
+            <li>Bash kabuğu (shell) tanımı. Terminal ve GUI farkı.</li>
+            <li><span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">echo $SHELL</span> ile kontrol.</li>
+            <li>Terminal emülatörleri: GNOME Terminal, Konsole, Terminator</li>
+
+        </ul>
+
+        <details open>
+            <summary>Notlar</summary>
+                <div class="note-content">
+                    <strong>BASH</strong><br>
+
+                    <p>
+                    <strong>Bash,</strong> Linux ve UNIX-benzeri sistemlerde en yaygın kullanılan kabuk (shell)
+                    programlarından biridir. Kabuk, kullanıcıyla işletim sistemi arasında bir arabirim görevi görür
+                    — sen komutları yazarsın, o yorumlar ve işletim sistemine iletir.
+                    </p>
+
+                    <p>
+                    <strong>Bash kabuğunun temel görevleri:</strong><br>
+                    Komut yorumlama: Yazdığın komutları işler ve çalıştırır.<br>
+                    Script yazma: Otomatik görevler için bash betikleri (script'leri) yazabilirsin.<br>
+                    Değişken yönetimi: Verileri geçici olarak saklayabilir ve kullanabilirsin.<br>
+                    Dosya/dizin işlemleri: Dosya oluşturma, silme, taşıma vb. işlemleri kolayca yapabilirsin.
+                    </p>
+
+                    <strong>echo $SHELL</strong><br>
+                    <p>
+                    Bu komut, şu anda oturumunda aktif olarak kullanılan kabuğun (shell) yolunu ekrana yazdırır. 
+                    <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);"> $SHELL </span> 
+                    ifadesi bir ortam değişkenidir ve sistem açıldığında kullanıcı için tanımlanan varsayılan 
+                    kabuk yolunu saklar.</p> 
+                    <p>Örneğin:  <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">/bin/bash</span></p>
+                    <p>Gibi bir çıktı alırsak, kabuk bash anlamına gelir.</p>
+                </div>
+            </details>
+
+        
+        <h3>Dosya Sistemi Yapısı</h3>
+        <ul>
+            <li><strong>Kök dizin:</strong> /</li>
+            <li><strong>Kullanıcı dizini:</strong> /home/USERNAME</li>
+            <li><strong>Önemli dizinler:</strong> /etc, /var, /usr, /bin, /dev, /tmp</li>
+            <li><strong>Yol örnekleri:</strong> ../, ./, /home/user/Desktop</li>
+        </ul>
+
+        <h3>Temel Komutlar</h3>
+        <table>
+            <tr><th>Komut</th><th>Açıklama</th></tr>
+            <tr><td>pwd</td><td>Bulunduğun dizini gösterir</td></tr>
+            <tr><td>ls -l</td><td>Dosya ve klasörleri detaylı listeler</td></tr>
+            <tr><td>cd</td><td>Dizin değiştirir</td></tr>
+            <tr><td>mkdir</td><td>Klasör oluşturur</td></tr>
+            <tr><td>touch</td><td>Dosya oluşturur</td></tr>
+            <tr><td>rm</td><td>Dosya silme işlemi</td></tr>
+            <tr><td>cp</td><td>Kopyalama işlemi</td></tr>
+            <tr><td>mv</td><td>Taşıma/Yeniden adlandırma</td></tr>
+            <tr><td>chmod</td><td>Erişim izinlerini değiştirir</td></tr>
+            <tr><td>clear</td><td>Terminal ekranını temizler</td></tr>
+            <tr><td>man</td><td>Yardım dökümünü açar</td></tr>
+            <tr><td>cat</td><td>Dosya içeriğini görüntüler</td></tr>
+            <tr><td>grep</td><td>Dosya içinde metin arar</td></tr>
+            <tr><td>find</td><td>Dosya veya klasör arar</td></tr>
+            <tr><td>head / tail</td><td>Dosyanın başını/sonunu gösterir</td></tr>
+            <tr><td>chown</td><td>Dosya sahibini değiştirir</td></tr>
+            <tr><td>nano</td><td>Terminal metin editörü</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Uygulamalı Egzersiz</h2>
+        <div class="code-block">
+        mkdir ~/bootcamp_dersi<br>
+        cd ~/bootcamp_dersi<br>
+        touch deneme.txt<br>
+        mkdir klasor1<br>
+        cp deneme.txt klasor1/<br>
+        ls<br>
+        rm deneme.txt
+        </div>
+
+        
+        <h3>Ekstra İpuçları</h3>
+        <ul>
+            <li><strong>Yukarı/Aşağı ok tuşları:</strong> Önceki/sonraki komut</li>
+            <li><strong>Ctrl + C:</strong> İşlemi iptal etme</li>
+            <li><strong>Ctrl + L:</strong> Ekran temizleme</li>
+            <li><strong>Tab tuşu:</strong> Otomatik tamamlama</li>
+            <li><strong>CTRL + SHIFT + N:</strong> Yeni terminal penceresi açar</li>
+            <li><strong>CTRL + SHIFT + C/V:</strong> Kopyala/Yapıştır</li>
+            <li><strong>CTRL + SHIFT + W:</strong> Sekmeyi kapatır</li>
+            <li><strong>CTRL + SHIFT + T:</strong> Yeni sekme açar</li>
+            <li><strong>history:</strong> Önceki komutlar</li>
+            <li><strong>!komut:</strong> Önceki komutu tekrar çalıştırır</li>
+            <small>
+                Bu komut, geçmişte çalıştırılan komutlarından en sonuncusunu tekrar çalıştırır.
+                Eğer <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">ls -la /home/kaya</span> gibi bir komut,<br> 
+                daha önce kullanılmış ise, <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">!ls</span> bunu yeniden çalıştırır.
+            </small>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>İzinler (Permissions)</h2>
+        <p>Örnek: <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">drwxr-xr-x</span> veya <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">-rw-r--r--</span></p>
+        <ul>
+            <li><strong>d:</strong> Klasör (Directory)</li>
+            <li><strong>r:</strong> Okuma (Read)</li>
+            <li><strong>w:</strong> Yazma (Write)</li>
+            <li><strong>x:</strong> Çalıştırma (Execute)</li>
+        </ul>
+        <p><strong>Yapı:</strong> Owner (Kullanıcı) | Group (Grup) | Other (Diğerleri)</p>
+
+        <h3>Sayısal Karşılıklar (chmod)</h3>
+        <table>
+            <tr><th>Sayı</th><th>İzin</th><th>Binary</th></tr>
+            <tr><td>7</td><td>rwx</td><td>111</td></tr>
+            <tr><td>6</td><td>rw-</td><td>110</td></tr>
+            <tr><td>5</td><td>r-x</td><td>101</td></tr>
+            <tr><td>4</td><td>r--</td><td>100</td></tr>
+            <tr><td>3</td><td>-wx</td><td>011</td></tr>
+            <tr><td>2</td><td>-w-</td><td>010</td></tr>
+            <tr><td>1</td><td>--x</td><td>001</td></tr>
+            <tr><td>0</td><td>---</td><td>000</td></tr>
+        </table>
+
+        <h3>Örnek Egzersiz</h3>
+        <div class="code-block">
+        touch script.sh <br>
+        nano script.sh # (İçine: echo Merhaba Dünya) <br>
+        ./script.sh    # Hata Alacağız<br>
+        <br>
+        # Permission denied <br>
+        # Neden hata aldığımıza ls -l ile bakıyoruz <br>
+        # İzin yok o yüzden izin vermemiz lazım <br>
+        <br> 
+        ls -l        <br>
+        chmod +x script.sh <br>
+        ./script.sh    # Başarılı! <br>
+        <br>
+        # Bir diğer uygulama <br>
+        touch deneme2.txt <br>
+        nano deneme2.txt # (İçine: Merhaba Bootcamp.) <br>
+        cat deneme2.txt <br>
+        <br>
+        chmod u-r deneme2.txt <br>
+        cat deneme2.txt <br>
+        # hata alacağız <br>
+        <br>
+        chmod u+r deneme2.txt <br>
+        nano deneme2.txt (İçine: nasılsın)<br>
+        cat deneme2.txt # Başarılı! <br>
+    </div>
+
+    <details open>
+            <summary>NANO ve PICO editörleri</summary>
+                <div class="note-content">
+                    <strong>Nano Linux için, Pico ise Mac için optimize edilmiş metin editörleridir.</strong><br>
+                <p>Her iki editörde de kaydedip çıkmak için Ctrl + O (kaydet), Enter (onayla), Ctrl + X (çıkış) tuşlarına basın.</p>
+                </div>
+            </details>
+                
+    </div>
+
+    <div class="card">
+        <h2>Yönlendirme ve Piping</h2>
+        <p>Linux'ta komutların çıktılarını (Standard Output) veya girdilerini (Standard Input) yönetmek,
+otomasyon ve scripting için temeldir.</p>
+        <h3>1. Çıktı Yönlendirme (Redirection)</h3>
+        <p>Bu işlem, komut çıktısını ekrana göndermek yerine bir dosyaya kaydetmeyi sağlar.</p>
+        <table>
+            <tr><th>Komut</th><th>Açıklama</th></tr>
+            <tr><td>></td><td>Komut çıktısını dosyaya yazar.
+Dosya daha önce varsa içeriğini siler
+ve üzerine yazar.</td></tr>
+            <tr><td>>></td><td>Komut çıktısını dosyanın sonuna
+ekler. Dosyanın mevcut içeriğini
+korur.</td></tr>
+        </table>
+
+        <div class="code-block">
+        echo "echo Merhaba Dünya" > script.sh <br>
+        ./script.sh #Permission denied<br>
+        ls -l<br>
+        <br>
+        chmod +x script.sh<br>
+        ./script.sh<br>
+        <br>
+        echo "ben değiştim" > script.sh<br>
+        ./script.sh<br>
+        echo "echo Ben Eklendim" >> script.sh <br>
+        ./script.sh<br>
+    </div>
+        <h3>2. Boru Hattı (Piping)</h3>
+        <p>Boru hattı (`|` sembolü), birinci komutun çıktısını, ikinci komutun girdisi olarak kullanmayı
+sağlar. Bu, çıktıyı anında filtrelemek veya işlemek için çok güçlü bir yöntemdir.</p>
+        <div class="code-block">
+        history | grep ls<br>
+        ls -l <br>
+        ls -l | grep script.sh > cikti.txt<br>
+        cat cikti.txt<br>
+        </div>
+
+
+   <div class="card">
+    <h2>Paket Yönetimi <strong>APT</strong> ve <strong>BREW</strong></h2>
+
+    <table class="code-table">
+        <thead>
+        <tr>
+            <th>Linux - APT</th>
+            <th>Mac - BREW</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>sudo apt update <br> # Listeleri güncelle</code></td>
+            <td><code>brew update <br> # Listeleri güncelle</code></td>
+        </tr>
+        <tr>
+            <td><code>sudo apt upgrade <br> # Paketleri güncelle</code></td>
+            <td><code>brew upgrade<br> # Paketleri güncelle</code></td>
+        </tr>
+        <tr>
+            <td><code>sudo apt install htop <br> # htop yükle</code></td>
+            <td><code>brew install htop <br> # htop yükle</code></td>
+        </tr>
+        <tr>
+            <td><code>sudo apt remove htop<br> # htop kaldır</code></td>
+            <td><code>brew uninstall htop <br> # htop kaldır</code></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="code-block">
+        sudo apt install cowsay ---- brew install cowsay<br>
+        cowsay Merhaba Bootcamp!<br>
+        cowsay -f turkey "Elveda Docker"<br>
+    </div>
+
+    <details open>
+            <summary>Eğer GitHub Codespace Kullanılıyorsa</summary>
+                <div class="note-content">
+                    <strong>Codespace veya benzeri bir ortam üzerinden çalışıyorsak hata alabiliriz</strong><br>
+                <p>Apt yöneticisi hata verirse şu adımlar izlenebilir.</p>
+                <div class="code-block">
+                    nano ~/.bashrc<br>
+                    # En son satıra şu yazılır:<br>
+                    export PATH=$PATH:/usr/games<br>
+                    # Ctrl+s ve ctrl+x ile kaydedilir ve çıkılır.<br>
+                    # Daha sonra terminale şu komut yazılır:<br>
+                    source ~/.bashrc <br>
+                </div>
+                </div>
+            </details>
+    
+    <div class="card">
+        <h2>Kabuk (Shell) Nedir?</h2>
+        <p>Kabuğu, sizinle Linux'un çekirdeği (yani beyni) arasında duran bir tercüman olarak
+düşünebilirsiniz.</p>
+        <ul>
+                <li><strong>Siz Ne Yaparsınız?</strong> Terminale ls, mkdir gibi bildiğiniz komutları yazarsınız. Bu, sizin
+konuştuğunuz dildir.</li>
+                <li><strong>Tercüman (Kabuk) Ne Yapar?</strong> Yazdığınız bu komutu alır ve Linux'un anlayacağı teknik bir
+dile çevirerek çekirdeğe iletir.</li>
+                <li><strong>Sonuç:</strong> Çekirdek istenen işi yapar (klasörü oluşturur, dosyaları listeler vb.) ve sonucu
+kabuğa geri verir. Kabuk da bu teknik sonucu sizin için ekranda anlaşılır bir şekilde
+gösterir.</li>
+        </ul>
+        <p>Peki Ne İşe Yarar?</p>
+        <p>Kabuk sadece tek tek komutları çevirmez. Asıl gücü, bu komutları bir araya getirerek size
+otomasyon yapma imkanı vermesidir.</p>
+    </div>
+
+    <div class="card">
+        <h2>SSH ile Uzaktan Bağlantı</h2>
+        <p><strong>SSH (Secure Shell):</strong>Uzak bir bilgisayara güvenli bir şekilde bağlanmanı sağlayan bir ağ protokolüdür.<br>
+            Özellikle <strong>sistem yöneticileri, geliştiriciler ve sunucu yöneten herkes</strong> için vazgeçilmezdir.<br>
+            SSH, <strong>istemci-sunucu</strong> modeliyle çalışır. Bağlantı kurulduğunda, tüm veri alışverişi <strong>şifrelenmiş</strong> bir kanal üzerinden gerçekleşir.</p>
+        
+            <div class="code-block">
+            # Kurulum (Linux Sunucu tarafı - Mac'te ön yüklü gelir ayarlardan aktif edilir)<br>
+            sudo apt install openssh-server<br>
+            sudo systemctl start ssh<br>
+            <br>
+            # Eğer hata alınırsa şu komut denenebilir<br>
+            sudo service ssh start<br>
+            <br>
+            <br>
+            # Bağlantı kurmak için(İstemci tarafı)<br>
+            ssh kullanici@sunucu_ip
+        </div>
+    </div>
+    
+    <details>
+    <summary>IP Adresi Nasıl Öğrenilir?</summary>
+
+    <div class="note-content">
+        
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin: 0 0 10px 0; color: #ffcc00;">Linux (Terminal)</h3>
+            <div class="code-block">ifconfig</div>
+            <p style="font-size: 0.9em; margin-top: 5px;">
+                <strong>Neye bakmalısın?</strong><br>
+                • <code>eth0</code> veya <code>enp...</code>: Kablolu (Ethernet) bağlantısı.<br>
+                • <code>wlan0</code>: Kablosuz (Wi-Fi) bağlantısı.<br>
+                İlgili ismin altındaki <code>inet</code> satırı IP adresindir.
+            </p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
+
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin: 0 0 10px 0; color: #999;">macOS (Terminal)</h3>
+            <div class="code-block">ifconfig | grep "inet "</div>
+            <p style="font-size: 0.9em; margin-top: 5px;">
+                <strong>Mac'te her iki bağlantı için de aynı komut kullanılır.</strong> Çıktıda şunları aramalısınız:<br>
+                • Kablolu (Ethernet): Genellikle <code>en1</code>, <code>en2</code> veya <strong>USB adaptörünüzün ismi</strong> yazar.<br>
+                • Kablosuz (Wi-Fi): Genellikle <code>en0</code> bağlantısıdır.<br>
+                <br>
+                <span style="color: #ffcc00; font-weight: bold;">Unutmayın:</span> Sadece bağlı ve çalışan arayüzün altında <code>inet</code> ile başlayan IP adresini kullanmalısınız.
+            </p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
+
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin: 0 0 10px 0; color: #00adef;">Windows (CMD/PowerShell)</h3>
+            <div class="code-block">ipconfig</div>
+            <p style="font-size: 0.9em; margin-top: 5px;">
+                <strong>Neye bakmalısın?</strong><br>
+                • <strong>Wireless LAN adapter Wi-Fi:</strong> Kablosuz bağlantı.<br>
+                • <strong>Ethernet adapter:</strong> Kablolu bağlantı.<br>
+                İlgili bölümdeki <code>IPv4 Address</code> satırı IP adresindir.
+            </p>
+        </div>
+
+    </div>
+</details>
+
+
+    <div class="card">
+        <h2>Dosya Transferi: SCP ve Rsync</h2>
+        
+        <h3>1. SCP (Secure Copy Protocol)</h3>
+        <p>Kopyalama yapar. SSH altyapısını kullanır.</p>
+        <div class="code-block">
+            # Dosya Gönderme <br>
+            scp dosya.txt kullanici@sunucu_ip:/hedef/klasor/ <br>
+            <br>
+            # Klasör Gönderme (-r) <br>
+            scp -r klasor/ kullanici@sunucu_ip:/hedef/ <br>
+        </div>
+
+            <div class="card" style="border-top: 4px solid var(--accent);">
+        <h2>Farklı Senaryolar</h2>
+        <p>Teoriyi öğrendik, şimdi uygulama zamanı. Aşağıdaki senaryolardan size uygun olanı seçin ve komutları uygulayın.</p>
+        
+        <div style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--accent);">
+            <h3 style="margin-top: 0; color: var(--accent);">Önce Hazırlık: Kimim ve Neredeyim?</h3>
+            <p style="font-size: 0.9em; margin-bottom: 10px;">Transfer yapmadan önce şu komutlarla bilgilerinizi öğrenin:</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
+                    <code style="color: #ffbf00; font-size: 1.1em;">pwd</code><br>
+                    <small style="color: #888;">Neredeyim?</small>
+                </div>
+                <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
+                    <code style="color: #ffbf00; font-size: 1.1em;">whoami</code><br>
+                    <small style="color: #888;">Kullanıcı Adım Ne?</small>
+                </div>
+            </div>
+            <p style="font-size: 0.85em; margin-top: 10px; color: #ccc; text-align: center;">
+                💡 <strong>Hedef Klasör:</strong> Genellikle <code>Desktop</code> (Masaüstü) kullanılır.<br>
+                <strong>Dikkat!</strong> Direkt ana dizine göndermeye çalışırsanız izin hatası alabilirsiniz.<br>
+                Aa dizine göndermeye çalışmak yerine <code>/Desktop</code> veya başka bir klasöt kullanın.<br>
+                Linux yolu örneği: <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">/home/kullaniciadi/Desktop</span>
+            </p>
+        </div>
+
+        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--mac-color);">
+            <h3 style="margin-top: 0; color: var(--mac-color);">Senaryo 1: Mac ➔ Mac</h3>
+            
+            <p><strong>1. Alıcı Mac (Dosyayı Alacak Kişi):</strong></p>
+            <ul style="font-size: 0.9em; color: #ddd;">
+                <li>Ayarlar > Paylaşma > <strong>Uzaktan Oturum Açma</strong>'yı aç.</li>
+                <li>Terminal'e <code>ifconfig | grep "inet "</code> yaz, IP'ni öğren.</li>
+                <li><code>whoami</code> yaz, kullanıcı adını öğren.</li>
+            </ul>
+
+            <p><strong>2. Gönderici Mac (Dosyayı Atacak Kişi):</strong></p>
+            <div class="code-block">
+scp dosya.txt kaya@192.168.1.10:~/Desktop/
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--win-color);">
+            <h3 style="margin-top: 0; color: var(--win-color);">    Senaryo 2: Windows ➔ Windows</h3>
+            
+            <p><strong>1. Alıcı Windows:</strong></p>
+            <ul style="font-size: 0.9em; color: #ddd;">
+                <li>Ayarlar > İsteğe bağlı özellikler > <strong>OpenSSH Sunucusu</strong>'nu kur.</li>
+                <li>Hizmetler (Services) > <strong>OpenSSH SSH Server</strong> > Başlat.</li>
+                <li><code>ipconfig</code> ile Wi-Fi IP'sini öğren.</li>
+                <li><code>echo %USERNAME%</code> ile kullanıcı adını öğren.</li>
+            </ul>
+
+            <p><strong>2. Gönderici Windows (CMD):</strong></p>
+            <div class="code-block">
+scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
+            </div>
+            <strong>Dikkat! </strong>Windows'ta yol ayracı olarak ters eğik çizgi (\) yerine eğik çizgi (/) kullanılır.
+        </div>
+
+        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--wsl-color);">
+            <h3 style="margin-top: 0; color: var(--wsl-color);">Senaryo 3:Linux (Terminal veya WSL) ➔ Windows</h3>
+            <p style="font-size: 0.9em; color: #ccc;">Linux terminalinden Windows bilgisayara dosya atmak için.</p>
+
+            <p><strong>1. Alıcı Windows:</strong></p>
+            <p style="font-size: 0.9em; color: #ddd;">Yukarıdaki "Senaryo 2"deki adımların aynısını yapar (SSH açar, IP ve Kullanıcı adını verir).</p>
+
+            <p><strong>2. Gönderici Linux:</strong></p>
+            <div class="code-block">
+            scp deneme.txt seher@192.168.1.12:C:/Users/seher/Desktop/
+            </div>
+        </div>
+        </div>
+
+        </div>
+
+
+        <h3>2. Rsync (Remote Sync)</h3>
+        <p>Sadece değişen dosyaları senkronize eder. Yedekleme için idealdir.</p>
+        <div class="code-block">
+            rsync -avh kaynak/ kullanici@sunucu_ip:/hedef/ <br>
+            <br> 
+            # Parametreler <br>
+            # -a: Arşiv modu (izinleri korur) <br>
+            # -v: Detaylı çıktı <br>
+            # -h: Okunabilir boyut <br>
+            # -z: Sıkıştırma <br>
+        </div>
+        <p>Bash script ile günlük otomatik yedekleme işlemi hazırlanabilir.</p>
+        <div class="code-block">
+            #!/bin/bash <br>
+            rsync -avh ~/Belgeler/ kullanici@192.168.1.5:/yedek/Belgeler/ <br>
+            echo "Yedekleme tamamlandı." <br>
+        </div>
+    </div>
+
+        <details>
+            <summary>Meraklısına otomatik Yedekleme Nasıl Yapılır?</summary>
+            <div class="note-content">
+                
+                <p style="margin-bottom: 20px;">Bu rehber, her gece saat 03:00'te dosyalarınızı otomatik olarak sunucuya yedekleyen bir sistem kurmanızı sağlar. İki aşamadan oluşur: <strong>Şifresiz Giriş</strong> ve <strong>Zamanlama</strong>.</p>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 15px; color: var(--win-color);">Bölüm 1: Şifresiz Bağlantı (SSH Key)</h3>
+                    <p style="font-size: 0.9em; color: #ccc;">Amaç: Sistemin her seferinde şifre sormasını engellemek.</p>
+
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">1. Anahtar Oluştur</strong>
+                        <div class="code-block">ssh-keygen -t rsa</div>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 5px;">Soru sorduğunda hepsine <strong>Enter</strong> basıp geçin. Şifre belirlemeyin.</p>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">2. Anahtarı Sunucuya Kopyala</strong>
+                        <div class="code-block">ssh-copy-id kullanici@sunucu_ip</div>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 5px;">Bu komut, son kez sunucu şifrenizi soracaktır.</p>
+                    </div>
+
+                    <div>
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">3. Test Et</strong>
+                        <div class="code-block">ssh kullanici@sunucu_ip</div>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 5px;">Şifre sormadan giriş yapabiliyorsanız işlem tamamdır.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 15px; color: var(--win-color);">Bölüm 2: Görevi Zamanlama (Cron)</h3>
+                    <p style="font-size: 0.9em; color: #ccc;">Amaç: Komutu belirli bir saatte otomatik çalıştırmak.</p>
+
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">1. Zaman Çizelgesini Aç</strong>
+                        <div class="code-block">crontab -e</div>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 5px;">Editör sorarsa <strong>nano</strong> seçin.</p>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">2. Komutu Ekle</strong>
+                        <p style="font-size: 0.9em;">Dosyanın <strong>en alt satırına</strong> inin ve şu kodu yapıştırın (kendi kullanıcı adınızı yazmayı unutmayın):</p>
+                        <div class="code-block">0 3 * * * rsync -avh /home/kayafurkan/Belgeler/ kullanici@sunucu_ip:/yedek/Belgeler/</div>
+                        
+                        <div style="background-color: #222; padding: 10px; border-radius: 5px; margin-top: 10px; border-left: 3px solid #666;">
+                            <strong style="color: #ccc;">Kodun Anlamı:</strong><br>
+                            <code style="color: #ffbf00;">0 3 * * *</code> : Her gece saat 03:00'te çalıştır.<br>
+                            <span style="font-size: 0.85em; color: #888;">Not: Cron içinde "~" işareti yerine "/home/kullanici/" tam yolunu kullanmak daha güvenlidir.</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <strong style="display:block; color: #fff; margin-bottom: 5px;">3. Kaydet ve Çık</strong>
+                        <p style="font-size: 0.9em;">Nano kullanıyorsanız: <strong>Ctrl+O</strong> (Kaydet), <strong>Enter</strong>, sonra <strong>Ctrl+X</strong> (Çık).</p>
+                    </div>
+                </div>
+
+            </div>
+        </details>
+    
+
+    <div style="margin-top: 30px; margin-bottom: 20px;">
+            <h3 style="text-align: center; color: var(--accent-color); margin-bottom: 15px;">SCP vs Rsync: Hangisini Seçmeli?</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                
+                <div style="background-color: #252525; padding: 15px; border-radius: 8px; border-top: 3px solid #23a8f2;">
+                    <h4 style="color: #23a8f2; margin-top: 0; text-align: center;">SCP (Kopyala)</h4>
+                    <p style="font-size: 0.85em; color: #ccc; text-align: center;">Basit ve hızlı, tek seferlik işler için.</p>
+                    
+                    <ul style="list-style: none; padding: 0; font-size: 0.9em;">
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #0daf1d;">✔</span> Kolay sözdizimi
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #0daf1d;">✔</span> SSH şifreli güvenli bağlantı
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #ff4d4d;">✘</span> Her seferinde <strong>tüm dosyayı</strong> baştan gönderir
+                        </li>
+                        <li>
+                            <span style="color: #ff4d4d;">✘</span> Senkronizasyon yapmaz
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #252525; padding: 15px; border-radius: 8px; border-top: 3px solid #f2a900;">
+                    <h4 style="color: #f2a900; margin-top: 0; text-align: center;">Rsync (Senkronize Et)</h4>
+                    <p style="font-size: 0.85em; color: #ccc; text-align: center;">Yedekleme ve büyük dosyalar için.</p>
+                    
+                    <ul style="list-style: none; padding: 0; font-size: 0.9em;">
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #0daf1d;">✔</span> <strong>Sadece değişenleri</strong> gönderir (Hızlı)
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #0daf1d;">✔</span> Kaldığı yerden devam edebilir
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="color: #0daf1d;">✔</span> Bant genişliği dostudur
+                        </li>
+                        <li>
+                            <span style="color: #ff4d4d;">✘</span> Komut yapısı biraz daha karmaşıktır
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <br>
+
+        </div>
+
+    <details>
+            <summary style="color:red;">Olası Sorunlar ve Çözümler</summary>
+            <div class="note-content">
+                <div class="trouble-box">
+                    <div class="issue">
+                        <strong>Sorun: Ağlar Arası İletişim Yok</strong>
+                        <p>Her şey doğru olmasına rağmen ping atılamıyor.</p>
+                    </div>
+                    <div class="solution">
+                        <strong>Çözüm:</strong> İki bilgisayarın da <strong>birebir aynı ağa</strong> (aynı Wi-Fi ismine) bağlı olduğundan emin olun. Biri Eduroam, diğeri kablolu ağda ise birbirlerini göremezler.
+                    </div>
+                </div>
+
+                <div class="trouble-box">
+                    <div class="issue">
+                        <br>
+                        <strong>Sorun: Host Key Changed (Kimlik Değişti)</strong>
+                        <p>Ekranda büyük bir uyarı çıkıyor ve güvenlik riski olduğunu söylüyor.</p>
+                    </div>
+                    <div class="solution">
+                        <strong>Çözüm:</strong> Daha önce aynı IP'yi kullanan başka birine bağlandığınız için parmak izi çakışması oluyor. Şu komutla eski kaydı silin:
+                        <div class="code-mini"><span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">ssh-keygen -R "IP_ADRESI"</span></div>
+                    </div>
+                </div>
+
+                <div class="trouble-box">
+                    <div class="issue">
+                        <br>
+                        <strong>Sorun: Bağlantı Zaman Aşımı (Connection Timed Out)</strong>
+                        <p>Komut yazıldığında hiçbir şey olmuyor, ekran donuyor ve sonunda hata veriyor.</p>
+                    </div>
+                    <div class="solution">
+                        <strong>Çözüm:</strong> Bu genellikle Güvenlik Duvarı (Firewall) sorunudur. Alıcı bilgisayarın güvenlik duvarı ayarlarından "Gelen Kurallar" kısmında <strong>Port 22 (SSH)</strong> trafiğine izin verilmelidir.
+                    </div>
+                </div>
+
+                <div class="trouble-box">
+                    <div class="issue">
+                        <br>
+                        <strong>Sorun: Yanlış IP Adresi</strong>
+                        <p>Bağlantı kurulamıyor, hedef bulunamıyor.</p>
+                    </div>
+                    <div class="solution">
+                        <strong>Çözüm:</strong> Katılımcılar yanlışlıkla WSL içindeki sanal IP'yi (172.x.x.x) veriyor olabilir. Windows için <code>ipconfig</code>, Mac için <code>ifconfig</code> komutunu kullanarak <strong>Wi-Fi ağındaki gerçek IP</strong> (genelde 192.168.x.x veya 10.x.x.x) kullanılmalıdır.
+                    </div>
+                </div>
+
+                <div class="trouble-box">
+                    <div class="issue">
+                        <br>
+                        <strong>Sorun: Bağlantı Reddedildi (Connection Refused)</strong>
+                        <p>IP doğru ama hedef makine bağlantıyı kabul etmiyor.</p>
+                    </div>
+                    <div class="solution">
+                        <strong>Çözüm:</strong> Alıcı bilgisayarda SSH servisi çalışmıyor demektir. 
+                        <br>- <strong>Windows:</strong> OpenSSH Server servisini başlatın.
+                        <br>- <strong>Mac:</strong> Ayarlardan "Uzaktan Oturum Açma"yı aktif edin.
+                        <br>- <strong>Linux:</strong> <code>sudo service ssh start</code> komutunu çalıştırın.
+                    </div>
+                </div>
+
+            </div>
+        </details>
+
+
+    <div class="card">
+        <h2>Zenity GUI ile Dosya Göndermek</h2>
+        <p>Grafik arayüzlü dosya transfer aracı.</p>
+        <p>Aslında alıştıktan sonra CLI hem daha kullanışlı hem de daha kolay ama</p>
+        <P>Sistemin aslında nasıl çalıştığını anlamak için güzel bir örnek olabilir</P>
+        <p><strong>Gereksinimler:</strong> <code>sudo apt install zenity sshpass</code></p>
+        
+        <div class="code-container" style="position: relative;">
+            <button onclick="copyCode()" style="position: absolute; top: 10px; right: 10px; background: #444; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8em;">Kopyala</button>
+            
+            <pre id="scriptCode" class="code-block" style="white-space: pre; overflow-x: auto;">#!/bin/bash
+
+                # 1. Dosya Seçimi
+                FILE=$(zenity --file-selection --title="Gönderilecek dosyayı seçin")
+                if [ $? -ne 0 ]; then
+                    zenity --error --text="İşlem iptal edildi."
+                    exit
+                fi
+
+                # 2. Hedef Dizin
+                DEST=$(zenity --entry --title="Hedef Dizin" --text="Dosyanın sunucuda kopyalanacağı TAM YOLU girin:\n\nÖrn (Windows): C:/Users/kullanici/Desktop\nÖrn (Linux): /home/kullanici/Desktop")
+                if [ $? -ne 0 ]; then
+                    zenity --error --text="İşlem iptal edildi."
+                    exit
+                fi
+
+                # 3. IP Adresi
+                TARGET=$(zenity --entry --title="Hedef IP" --text="Bağlantı adresini girin (kullanici@ip):")
+                if [ $? -ne 0 ]; then
+                    zenity --error --text="İşlem iptal edildi."
+                    exit
+                fi
+
+                # 4. Şifre Alma
+                PASSWORD=$(zenity --password --title="Sunucu Şifresi" --text="Lütfen '$TARGET' için şifrenizi girin:")
+                if [ $? -ne 0 ]; then
+                    zenity --error --text="İşlem iptal edildi."
+                    exit
+                fi
+
+                # 5. Transfer İşlemi (sshpass ile)
+                # Not: sshpass şifreyi otomatik girer, böylece terminal donmaz.
+                sshpass -p "$PASSWORD" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$FILE" "$TARGET":"$DEST"
+
+                # 6. Sonuç Bildirimi
+                if [ $? -eq 0 ]; then
+                    zenity --info --text="Dosya başarıyla gönderildi."
+                else
+                    zenity --error --text="Gönderme sırasında hata oluştu.\n\nŞifre, IP veya Yol hatalı olabilir."
+                fi</pre>
+        </div>
+        <br>
+        <strong>Çalıştırmadan önce izin vermeyi unutmayın</strong><br>
+    </div>
+
+    <script>
+        function copyCode() {
+            /* Kod metnini al */
+            var codeText = document.getElementById("scriptCode").innerText;
+            
+            /* Panoya kopyala */
+            navigator.clipboard.writeText(codeText).then(function() {
+                /* Buton metnini değiştir */
+                var btn = document.querySelector("button[onclick='copyCode()']");
+                btn.innerHTML = "Kopyalandı!";
+                btn.style.background = "#0daf1d";
+                
+                /* 2 saniye sonra eski haline getir */
+                setTimeout(function() {
+                    btn.innerHTML = "Kopyala";
+                    btn.style.background = "#444";
+                }, 2000);
+            }, function(err) {
+                alert("Kopyalama başarısız oldu: " + err);
+            });
+        }
+    </script>
+
+<div class="card" style="margin-top: 30px; border-top: 4px solid var(--accent);">
+                <h3>Eğer Takılığınız Bir Yer Varsa Bize Ulaşmaktan Çekinmeyin</h3>
+                <p>Bize Whatsapp üzerinden ulaşabilirsiniz</p>
+            </div>
+        </div>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.85em;">
+        <p style="margin-bottom: 5px;"><strong style="color: #888;">NEXUS Yazılım Geliştirme Ekibi</strong></p>
+        <p style="margin: 0;">Alanya Alaaddin Keykubat Üniversitesi</p>
+        <p style="margin-top: 15px; color: #444;">Linux Bootcamp 2025</p>
+    </footer>
+
+</div> </body>
+</html>
+    
+</body>
+</html>
