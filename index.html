@@ -238,31 +238,69 @@
                 <br>
                 <img src="images/vscode-install-6.png" alt="Finish Ekranı">
             </div>
+
+            <div class="step">
+                <h3>Eğer Takılığınız Bir Yer Varsa Bize Ulaşmaktan Çekinmeyin</h3>
+                <p>Bize Whatsapp üzerinden ulaşabilirsiniz veya Bootcamp öncesi lab'da bizi bulabilirsiniz seve seve yardımcı oluruz</p>
+            </div>
+
         </div>
 
         <div class="section">
             <span class="badge badge-mac">macOS</span>
-            <h2></h2>
-            <h2 id="mac-ayarlari">Bölüm 3: Mac Kullanıcıları İçin Ayarlar</h2>
-            <p>Bootcamp sırasında dosya transferi yapabilmek için aşağıdaki ayarları açmanız gerekmektedir.</p>
+            <h2 id="mac-ayarlari">Bölüm 3: Mac Kullanıcıları İçin Ayarlar (OPSİYONEL)</h2>
+            <p>Mac kullanıcılarının bootcamp'e daha rahat katılabilmesi için iki önerimiz var: <strong>Homebrew kurulumu</strong> (gerekli araçları yüklemek için) ve <strong>Uzaktan Erişim ayarı</strong> (dosya alabilmek için).</p>
+            <p>Mac kullanıcıları için yapılması gereken adımlar opsiyoneldir, ancak önerilir.</p>
 
             <div class="step">
-                <h3>Adım 1: Paylaşım Ayarları</h3>
-                <p>Apple menüsünden <strong>Sistem Ayarları (System Settings)</strong>'na girin. Kenar çubuğunda <strong>Genel (General)</strong>'e tıklayın ve sağ taraftan <strong>Paylaşma (Sharing)</strong> menüsünü açın.</p>
-                <img src="images/mac-settings.png" alt="Mac Genel Ayarlar">
+                <h3>Adım 1: Homebrew (Brew) Kurulumu</h3>
+                <p>Linux'ta kullanacağımız bazı komutları (paket yükleme vb.) Mac'te kullanabilmek için <strong>Homebrew</strong> adlı aracı kurmamız gerekiyor. Korkmayın, çok basit!</p>
+                
+                <p>1. <strong>Terminali </strong>Açın: (Command + Space tuşlarına basın, "Terminal" yazıp Enter'a basın veya Launchpad üzerinden erişebilirsiniz)</p>
+                
+                <p>2. Şu komutu kopyalayıp terminale yapıştırın ve Enter'a basın:</p>
+                <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);"><pre>xcode-select --install</pre></span>
+                <img src="images/xcode-install-1.png" alt="Xcode Yükleme Komutu - 1">
+                <p>3. Ekrana bir pencere açılacaktır. <strong>"Yükle" (Install)</strong> butonuna tıklayın ardından (eğer sorarsa) lisans anlaşmasını onaylayın ve bitmesini bekleyin.</p>
+                <img src="images/xcode-install-2.png" alt="Xcode Yükleme Komutu - 2">
+                <img src="images/xcode-install-3.png" alt="Xcode Yükleme Komutu - 3 ">
+
+                <p>4. Xcode komut satırı araçları yüklendikten sonra tekrar terminale dönün.</p>
+                <p>5. Şu komutu kopyalayıp terminale yapıştırın ve Enter'a basın:</p>
+                <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);"><pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre></span>
+                <div class="important-note">
+                    Not: Şifrenizi yazarken ekranda harfler görünmez, bu normaldir. Yazıp Enter'a basın.
+                </div>
+                <img src="images/brew-install-1.png" alt="Brew Yükleme Komutu">
+
+                <p>6. En Önemli Kısım <strong>PATH</strong> Ayarı:</p>
+                <p>Yükleme bittiğinde terminalin <strong>en altında</strong> "Next steps:" başlığı altında size özel 2 veya 3 komut verecektir. O komutları (echo ve eval ile başlayanlar) görseldeki gibi sırasıyla kopyalayıp yapıştırmanız gerekir.</p>
+                <p><strong>Eğer o yazıyı kaçırdıysanız</strong> endişelenmeyin, aşağıdaki komutu yapıştırıp aynı yazıya ulaşabilirsiniz:</p>
+                <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);"><pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre></span>
+                <img src="images/brew-path.png" alt="Brew Path Ayarı">
             </div>
 
             <div class="step">
-                <h3>Adım 2: Uzaktan Oturum Açma</h3>
-                <p>Listeden <strong>Uzaktan Oturum Açma (Remote Login)</strong> seçeneğini bulun ve yanındaki (i) bilgi butonuna tıklayın.</p>
+                <h3>Adım 2: Uzaktan Dosya Alma Ayarı</h3>
+                <p>Eğer bootcamp sırasında arkadaşlarınızdan veya eğitmenlerden bilgisayarınıza dosya transferi (SCP) yapılmasını istiyorsanız bu ayarı açmalısınız.</p>
+                
+                <p>1. Apple menüsünden <strong>Sistem Ayarları (System Settings)</strong>'na girin.</p>
+                <p>2. Kenar çubuğunda <strong>Genel (General)</strong>'e tıklayın ve sağ taraftan <strong>Paylaşma (Sharing)</strong> menüsünü açın.</p>
+                <img src="images/mac-settings.png" alt="Mac Genel Ayarlar">
+                
+                <p>3. Listeden <strong>Uzaktan Oturum Açma (Remote Login)</strong> seçeneğini bulun ve yanındaki (i) bilgi butonuna tıklayın.</p>
                 <ul>
                     <li>"Uzaktan Oturum Açma" anahtarını <strong>Açık</strong> konuma getirin.</li>
                     <li>"Erişime şunun için izin ver:" kısmında <strong>"Tüm Kullanıcılar" (All Users)</strong> seçeneğini işaretleyin.</li>
                 </ul>
                 <img src="images/mac-remote-login-1.png" alt="Mac Uzaktan Oturum Açma">
                 <br>
-                <img src="images/mac-remote-login-2.png" alt="Mac Uzaktan Oturum Açma">
+                <img src="images/mac-remote-login-2.png" alt="Mac Uzaktan Oturum Açma Detay">
+            </div>
 
+            <div class="step">
+                <h3>Eğer Takılığınız Bir Yer Varsa Bize Ulaşmaktan Çekinmeyin</h3>
+                <p>Bize Whatsapp üzerinden ulaşabilirsiniz veya Bootcamp öncesi lab'da bizi bulabilirsiniz seve seve yardımcı oluruz</p>
             </div>
         </div>
 
