@@ -163,27 +163,28 @@
         </ul>
     </div>
 
+     <div class="card">
         <h3>Linux Dağıtımları (Distrolar)</h3>
         <p>Linux, özünde açık kaynaklı ve serbest bir işletim sistemi çekirdeğidir. Farklı topluluklar veya şirketler,
-bu çekirdeği temel alarak üzerine çeşitli masaüstü ortamları, sistem yazılımları ve paket yöneticileri
-ekleyerek kendi işletim sistemi paketlerini oluştururlar. Kullanıma hazır bu işletim sistemlerine
-Dağıtım (Distro) denir</p>
+        bu çekirdeği temel alarak üzerine çeşitli masaüstü ortamları, sistem yazılımları ve paket yöneticileri
+        ekleyerek kendi işletim sistemi paketlerini oluştururlar. Kullanıma hazır bu işletim sistemlerine
+        Dağıtım (Distro) denir</p>
             <p><strong>Bazı Dağıtım Örnekleri ve Alanları</strong></p>
             <ul>
                 <li><strong>Siber Güvenlik Dağıtımları:</strong> Linux'un siber güvenlik alanındaki gücünü gösteren, bu alana özel
-araçlarla donatılmış<strong> Kali Linux</strong> ve <strong>Parrot OS</strong> gibi dağıtımlar bulunur.</li>
+        araçlarla donatılmış<strong> Kali Linux</strong> ve <strong>Parrot OS</strong> gibi dağıtımlar bulunur.</li>
                 <li><strong>Debian/Ubuntu Tabanlı Dağıtımlar:</strong> Bootcamp'in ilerleyen kısımlarında göreceğimiz paket
-yönetimi komutları <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">(sudo apt update, sudo apt install vb.)</span>, özellikle <strong>Debian</strong> ve
-<strong>Ubuntu</strong> gibi yaygın dağıtımlarda kullanılan sistemlerdir.</li>
+        yönetimi komutları <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">(sudo apt update, sudo apt install vb.)</span>, özellikle <strong>Debian</strong> ve
+        <strong>Ubuntu</strong> gibi yaygın dağıtımlarda kullanılan sistemlerdir.</li>
                 <li><strong>Gömülü Sistemler ve Sunucular:</strong> <strong>Raspberry Pi</strong> ve <strong>Jetson</strong> gibi gömülü sistemler veya web
-sunucuları gibi özel alanlar için genellikle o alana yönelik optimize edilmiş farklı dağıtımlar
-kullanılır.</li>
+        sunucuları gibi özel alanlar için genellikle o alana yönelik optimize edilmiş farklı dağıtımlar
+        kullanılır.</li>
                 <li><strong>Arch Linux (Sıkıntılı İnsanların Kullandığı Distro):</strong> Arch Linux gibi dağıtımlar, kullanıcıya tam kontrol
-sunan minimalist bir yaklaşım benimser. Kullanıcılar, temel bir sistem üzerine yalnızca ihtiyaç
-duydukları bileşenleri kurar. Paket yönetimi için <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">apt</span> yerine <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">pacman</span> kullanır ve "rolling release"
-(sürekli güncelleme) modeliyle her zaman en güncel yazılımlara erişim sağlar.</li>
+        sunan minimalist bir yaklaşım benimser. Kullanıcılar, temel bir sistem üzerine yalnızca ihtiyaç
+        duydukları bileşenleri kurar. Paket yönetimi için <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">apt</span> yerine <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">pacman</span> kullanır ve "rolling release"
+        (sürekli güncelleme) modeliyle her zaman en güncel yazılımlara erişim sağlar.</li>
             </ul>
-
+    </div>
 
     <div class="card">
         <h2>Linux Temelleri</h2>
@@ -224,7 +225,7 @@ duydukları bileşenleri kurar. Paket yönetimi için <span style="font-family: 
                     <p>Örneğin:  <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">/bin/bash</span></p>
                     <p>Gibi bir çıktı alırsak, kabuk bash anlamına gelir.</p>
                 </div>
-            </details>
+        </details>
 
         
         <h3>Dosya Sistemi Yapısı</h3>
@@ -341,32 +342,33 @@ duydukları bileşenleri kurar. Paket yönetimi için <span style="font-family: 
         chmod u+r deneme2.txt <br>
         nano deneme2.txt (İçine: nasılsın)<br>
         cat deneme2.txt # Başarılı! <br>
-    </div>
+        </div>
 
-    <details open>
+        <details open>
             <summary>NANO ve PICO editörleri</summary>
                 <div class="note-content">
                     <strong>Nano Linux için, Pico ise Mac için optimize edilmiş metin editörleridir.</strong><br>
                 <p>Her iki editörde de kaydedip çıkmak için Ctrl + O (kaydet), Enter (onayla), Ctrl + X (çıkış) tuşlarına basın.</p>
                 </div>
-            </details>
+        </details>
                 
     </div>
 
     <div class="card">
         <h2>Yönlendirme ve Piping</h2>
         <p>Linux'ta komutların çıktılarını (Standard Output) veya girdilerini (Standard Input) yönetmek,
-otomasyon ve scripting için temeldir.</p>
+        otomasyon ve scripting için temeldir.</p>
         <h3>1. Çıktı Yönlendirme (Redirection)</h3>
         <p>Bu işlem, komut çıktısını ekrana göndermek yerine bir dosyaya kaydetmeyi sağlar.</p>
+        
         <table>
             <tr><th>Komut</th><th>Açıklama</th></tr>
             <tr><td>></td><td>Komut çıktısını dosyaya yazar.
-Dosya daha önce varsa içeriğini siler
-ve üzerine yazar.</td></tr>
+        Dosya daha önce varsa içeriğini siler
+        ve üzerine yazar.</td></tr>
             <tr><td>>></td><td>Komut çıktısını dosyanın sonuna
-ekler. Dosyanın mevcut içeriğini
-korur.</td></tr>
+        ekler. Dosyanın mevcut içeriğini
+        korur.</td></tr>
         </table>
 
         <div class="code-block">
@@ -381,83 +383,84 @@ korur.</td></tr>
         ./script.sh<br>
         echo "echo Ben Eklendim" >> script.sh <br>
         ./script.sh<br>
-    </div>
+        </div>
+
         <h3>2. Boru Hattı (Piping)</h3>
         <p>Boru hattı (`|` sembolü), birinci komutun çıktısını, ikinci komutun girdisi olarak kullanmayı
-sağlar. Bu, çıktıyı anında filtrelemek veya işlemek için çok güçlü bir yöntemdir.</p>
+        sağlar. Bu, çıktıyı anında filtrelemek veya işlemek için çok güçlü bir yöntemdir.</p>
         <div class="code-block">
         history | grep ls<br>
         ls -l <br>
         ls -l | grep script.sh > cikti.txt<br>
         cat cikti.txt<br>
         </div>
-
+    </div>    
 
    <div class="card">
-    <h2>Paket Yönetimi <strong>APT</strong> ve <strong>BREW</strong></h2>
+        <h2>Paket Yönetimi <strong>APT</strong> ve <strong>BREW</strong></h2>
 
-    <table class="code-table">
-        <thead>
-        <tr>
-            <th>Linux - APT</th>
-            <th>Mac - BREW</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><code>sudo apt update <br> # Listeleri güncelle</code></td>
-            <td><code>brew update <br> # Listeleri güncelle</code></td>
-        </tr>
-        <tr>
-            <td><code>sudo apt upgrade <br> # Paketleri güncelle</code></td>
-            <td><code>brew upgrade<br> # Paketleri güncelle</code></td>
-        </tr>
-        <tr>
-            <td><code>sudo apt install htop <br> # htop yükle</code></td>
-            <td><code>brew install htop <br> # htop yükle</code></td>
-        </tr>
-        <tr>
-            <td><code>sudo apt remove htop<br> # htop kaldır</code></td>
-            <td><code>brew uninstall htop <br> # htop kaldır</code></td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="code-table">
+            <thead>
+            <tr>
+                <th>Linux - APT</th>
+                <th>Mac - BREW</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><code>sudo apt update <br> # Listeleri güncelle</code></td>
+                <td><code>brew update <br> # Listeleri güncelle</code></td>
+            </tr>
+            <tr>
+                <td><code>sudo apt upgrade <br> # Paketleri güncelle</code></td>
+                <td><code>brew upgrade<br> # Paketleri güncelle</code></td>
+            </tr>
+            <tr>
+                <td><code>sudo apt install htop <br> # htop yükle</code></td>
+                <td><code>brew install htop <br> # htop yükle</code></td>
+            </tr>
+            <tr>
+                <td><code>sudo apt remove htop<br> # htop kaldır</code></td>
+                <td><code>brew uninstall htop <br> # htop kaldır</code></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="code-block">
+            sudo apt install cowsay ---- brew install cowsay<br>
+            cowsay Merhaba Bootcamp!<br>
+            cowsay -f turkey "Elveda Docker"<br>
+        </div>
+
+        <details open>
+                <summary>Eğer GitHub Codespace Kullanılıyorsa</summary>
+                    <div class="note-content">
+                        <strong>Codespace veya benzeri bir ortam üzerinden çalışıyorsak hata alabiliriz</strong><br>
+                    <p>Apt yöneticisi hata verirse şu adımlar izlenebilir.</p>
+                    <div class="code-block">
+                        nano ~/.bashrc<br>
+                        # En son satıra şu yazılır:<br>
+                        export PATH=$PATH:/usr/games<br>
+                        # Ctrl+s ve ctrl+x ile kaydedilir ve çıkılır.<br>
+                        # Daha sonra terminale şu komut yazılır:<br>
+                        source ~/.bashrc <br>
+                    </div>
+                    </div>
+        </details>
     </div>
 
-    <div class="code-block">
-        sudo apt install cowsay ---- brew install cowsay<br>
-        cowsay Merhaba Bootcamp!<br>
-        cowsay -f turkey "Elveda Docker"<br>
-    </div>
-
-    <details open>
-            <summary>Eğer GitHub Codespace Kullanılıyorsa</summary>
-                <div class="note-content">
-                    <strong>Codespace veya benzeri bir ortam üzerinden çalışıyorsak hata alabiliriz</strong><br>
-                <p>Apt yöneticisi hata verirse şu adımlar izlenebilir.</p>
-                <div class="code-block">
-                    nano ~/.bashrc<br>
-                    # En son satıra şu yazılır:<br>
-                    export PATH=$PATH:/usr/games<br>
-                    # Ctrl+s ve ctrl+x ile kaydedilir ve çıkılır.<br>
-                    # Daha sonra terminale şu komut yazılır:<br>
-                    source ~/.bashrc <br>
-                </div>
-                </div>
-            </details>
-    
     <div class="card">
         <h2>Kabuk (Shell) Nedir?</h2>
         <p>Kabuğu, sizinle Linux'un çekirdeği (yani beyni) arasında duran bir tercüman olarak
-düşünebilirsiniz.</p>
+        düşünebilirsiniz.</p>
         <ul>
-                <li><strong>Siz Ne Yaparsınız?</strong> Terminale ls, mkdir gibi bildiğiniz komutları yazarsınız. Bu, sizin
-konuştuğunuz dildir.</li>
-                <li><strong>Tercüman (Kabuk) Ne Yapar?</strong> Yazdığınız bu komutu alır ve Linux'un anlayacağı teknik bir
-dile çevirerek çekirdeğe iletir.</li>
-                <li><strong>Sonuç:</strong> Çekirdek istenen işi yapar (klasörü oluşturur, dosyaları listeler vb.) ve sonucu
-kabuğa geri verir. Kabuk da bu teknik sonucu sizin için ekranda anlaşılır bir şekilde
-gösterir.</li>
+            <li><strong>Siz Ne Yaparsınız?</strong> Terminale ls, mkdir gibi bildiğiniz komutları yazarsınız. Bu, sizin
+            konuştuğunuz dildir.</li>
+            <li><strong>Tercüman (Kabuk) Ne Yapar?</strong> Yazdığınız bu komutu alır ve Linux'un anlayacağı teknik bir
+            dile çevirerek çekirdeğe iletir.</li>
+            <li><strong>Sonuç:</strong> Çekirdek istenen işi yapar (klasörü oluşturur, dosyaları listeler vb.) ve sonucu
+            kabuğa geri verir. Kabuk da bu teknik sonucu sizin için ekranda anlaşılır bir şekilde
+            gösterir.</li>
         </ul>
         <p>Peki Ne İşe Yarar?</p>
         <p>Kabuk sadece tek tek komutları çevirmez. Asıl gücü, bu komutları bir araya getirerek size
@@ -481,55 +484,53 @@ otomasyon yapma imkanı vermesidir.</p>
             <br>
             # Bağlantı kurmak için(İstemci tarafı)<br>
             ssh kullanici@sunucu_ip
+            </div>
+    </div>
+
+    <div class="card">
+        <h2>IP Adresi Nasıl Öğrenilir?</h2>
+        <div class="note-content">
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin: 0 0 10px 0; color: var(--wsl-color);">Linux (Terminal)</h3>
+                <div class="code-block">ifconfig</div>
+                <p style="font-size: 0.9em; margin-top: 5px;">
+                    <strong>Neye bakmalısın?</strong><br>
+                    • <code>eth0</code> veya <code>enp...</code>: Kablolu (Ethernet) bağlantısı.<br>
+                    • <code>wlan0</code>: Kablosuz (Wi-Fi) bağlantısı.<br>
+                    İlgili ismin altındaki <code>inet</code> satırı IP adresindir.
+                </p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
+
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin: 0 0 10px 0; color: var(--mac-color);">macOS (Terminal)</h3>
+                <div class="code-block">ifconfig | grep "inet "</div>
+                <p style="font-size: 0.9em; margin-top: 5px;">
+                    <strong>Mac'te her iki bağlantı için de aynı komut kullanılır.</strong> Çıktıda şunları aramalısınız:<br>
+                    • Kablolu (Ethernet): Genellikle <code>en1</code>, <code>en2</code> veya <strong>USB adaptörünüzün ismi</strong> yazar.<br>
+                    • Kablosuz (Wi-Fi): Genellikle <code>en0</code> bağlantısıdır.<br>
+                    <br>
+                    <span style="color: #ffcc00; font-weight: bold;">Unutmayın:</span> Sadece bağlı ve çalışan arayüzün altında <code>inet</code> ile başlayan IP adresini kullanmalısınız.
+                </p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
+
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin: 0 0 10px 0; color: var(--win-color);">Windows (CMD/PowerShell)</h3>
+                <div class="code-block">ipconfig</div>
+                <p style="font-size: 0.9em; margin-top: 5px;">
+                    <strong>Neye bakmalısın?</strong><br>
+                    • <strong>Wireless LAN adapter Wi-Fi:</strong> Kablosuz bağlantı.<br>
+                    • <strong>Ethernet adapter:</strong> Kablolu bağlantı.<br>
+                    İlgili bölümdeki <code>IPv4 Address</code> satırı IP adresindir.
+                </p>
+            </div>
+
         </div>
     </div>
-    
-    <details>
-    <summary>IP Adresi Nasıl Öğrenilir?</summary>
-
-    <div class="note-content">
-        
-        <div style="margin-bottom: 20px;">
-            <h3 style="margin: 0 0 10px 0; color: #ffcc00;">Linux (Terminal)</h3>
-            <div class="code-block">ifconfig</div>
-            <p style="font-size: 0.9em; margin-top: 5px;">
-                <strong>Neye bakmalısın?</strong><br>
-                • <code>eth0</code> veya <code>enp...</code>: Kablolu (Ethernet) bağlantısı.<br>
-                • <code>wlan0</code>: Kablosuz (Wi-Fi) bağlantısı.<br>
-                İlgili ismin altındaki <code>inet</code> satırı IP adresindir.
-            </p>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
-
-        <div style="margin-bottom: 20px;">
-            <h3 style="margin: 0 0 10px 0; color: #999;">macOS (Terminal)</h3>
-            <div class="code-block">ifconfig | grep "inet "</div>
-            <p style="font-size: 0.9em; margin-top: 5px;">
-                <strong>Mac'te her iki bağlantı için de aynı komut kullanılır.</strong> Çıktıda şunları aramalısınız:<br>
-                • Kablolu (Ethernet): Genellikle <code>en1</code>, <code>en2</code> veya <strong>USB adaptörünüzün ismi</strong> yazar.<br>
-                • Kablosuz (Wi-Fi): Genellikle <code>en0</code> bağlantısıdır.<br>
-                <br>
-                <span style="color: #ffcc00; font-weight: bold;">Unutmayın:</span> Sadece bağlı ve çalışan arayüzün altında <code>inet</code> ile başlayan IP adresini kullanmalısınız.
-            </p>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #444; margin: 15px 0;">
-
-        <div style="margin-bottom: 20px;">
-            <h3 style="margin: 0 0 10px 0; color: #00adef;">Windows (CMD/PowerShell)</h3>
-            <div class="code-block">ipconfig</div>
-            <p style="font-size: 0.9em; margin-top: 5px;">
-                <strong>Neye bakmalısın?</strong><br>
-                • <strong>Wireless LAN adapter Wi-Fi:</strong> Kablosuz bağlantı.<br>
-                • <strong>Ethernet adapter:</strong> Kablolu bağlantı.<br>
-                İlgili bölümdeki <code>IPv4 Address</code> satırı IP adresindir.
-            </p>
-        </div>
-
-    </div>
-</details>
-
 
     <div class="card">
         <h2>Dosya Transferi: SCP ve Rsync</h2>
@@ -544,83 +545,80 @@ otomasyon yapma imkanı vermesidir.</p>
             scp -r klasor/ kullanici@sunucu_ip:/hedef/ <br>
         </div>
 
-            <div class="card" style="border-top: 4px solid var(--accent);">
-        <h2>Farklı Senaryolar</h2>
-        <p>Teoriyi öğrendik, şimdi uygulama zamanı. Aşağıdaki senaryolardan size uygun olanı seçin ve komutları uygulayın.</p>
+            <h4>Senaryolar</h4>
+            <p>Teoriyi öğrendik, şimdi uygulama zamanı. Aşağıdaki senaryolardan size uygun olanı seçin ve komutları uygulayın.</p>
+            
+            <div style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #727272; background-color: #1e1e1e;">
+                <h3 style="margin-top: 0; color: var(--accent);">Önce Hazırlık: Kimim ve Neredeyim?</h3>
+                <p style="font-size: 0.9em; margin-bottom: 10px;">Transfer yapmadan önce şu komutlarla bilgilerinizi öğrenin:</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
+                        <code style="color: #ffbf00; font-size: 1.1em;">pwd</code><br>
+                        <small style="color: #888;">Neredeyim?</small>
+                    </div>
+                    <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
+                        <code style="color: #ffbf00; font-size: 1.1em;">whoami</code><br>
+                        <small style="color: #888;">Kullanıcı Adım Ne?</small>
+                    </div>
+                </div>
+                <p style="font-size: 0.85em; margin-top: 10px; color: #ccc; text-align: center;">
+                    💡 <strong>Hedef Klasör:</strong> Genellikle <code>Desktop</code> (Masaüstü) kullanılır.<br>
+                    <strong>Dikkat!</strong> Direkt ana dizine göndermeye çalışırsanız izin hatası alabilirsiniz.<br>
+                    Aa dizine göndermeye çalışmak yerine <code>/Desktop</code> veya başka bir klasöt kullanın.<br>
+                    Linux yolu örneği: <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">/home/kullaniciadi/Desktop</span>
+                </p>
+
+
+                <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--mac-color);">
+                    <h3 style="margin-top: 0; color: var(--mac-color);">Senaryo 1: Mac ➔ Mac</h3>
+                    
+                    <p><strong>1. Alıcı Mac (Dosyayı Alacak Kişi):</strong></p>
+                    <ul style="font-size: 0.9em; color: #ddd;">
+                        <li>Ayarlar > Paylaşma > <strong>Uzaktan Oturum Açma</strong>'yı aç.</li>
+                        <li>Terminal'e <code>ifconfig | grep "inet "</code> yaz, IP'ni öğren.</li>
+                        <li><code>whoami</code> yaz, kullanıcı adını öğren.</li>
+                    </ul>
+
+                    <p><strong>2. Gönderici Mac (Dosyayı Atacak Kişi):</strong></p>
+                    <div class="code-block">
+                    scp dosya.txt kaya@192.168.1.10:~/Desktop/
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--win-color);">
+                    <h3 style="margin-top: 0; color: var(--win-color);">    Senaryo 2: Windows ➔ Windows</h3>
+                    
+                    <p><strong>1. Alıcı Windows:</strong></p>
+                    <ul style="font-size: 0.9em; color: #ddd;">
+                        <li>Ayarlar > İsteğe bağlı özellikler > <strong>OpenSSH Sunucusu</strong>'nu kur.</li>
+                        <li>Hizmetler (Services) > <strong>OpenSSH SSH Server</strong> > Başlat.</li>
+                        <li><code>ipconfig</code> ile Wi-Fi IP'sini öğren.</li>
+                        <li><code>echo %USERNAME%</code> ile kullanıcı adını öğren.</li>
+                    </ul>
+
+                    <p><strong>2. Gönderici Windows (CMD):</strong></p>
+                    <div class="code-block">
+                    scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
+                    </div>
+                    <strong>Dikkat! </strong>Windows'ta yol ayracı olarak ters eğik çizgi (\) yerine eğik çizgi (/) kullanılır.
+                </div>
+
+                <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--wsl-color);">
+                    <h3 style="margin-top: 0; color: var(--wsl-color);">Senaryo 3:Linux (Terminal veya WSL) ➔ Windows</h3>
+                    <p style="font-size: 0.9em; color: #ccc;">Linux terminalinden Windows bilgisayara dosya atmak için.</p>
+
+                    <p><strong>1. Alıcı Windows:</strong></p>
+                    <p style="font-size: 0.9em; color: #ddd;">Yukarıdaki "Senaryo 2"deki adımların aynısını yapar (SSH açar, IP ve Kullanıcı adını verir).</p>
+
+                    <p><strong>2. Gönderici Linux:</strong></p>
+                    <div class="code-block">
+                    scp deneme.txt seher@192.168.1.12:C:/Users/seher/Desktop/
+                    </div>
+                </div>
+        </div>
         
-        <div style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--accent);">
-            <h3 style="margin-top: 0; color: var(--accent);">Önce Hazırlık: Kimim ve Neredeyim?</h3>
-            <p style="font-size: 0.9em; margin-bottom: 10px;">Transfer yapmadan önce şu komutlarla bilgilerinizi öğrenin:</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
-                    <code style="color: #ffbf00; font-size: 1.1em;">pwd</code><br>
-                    <small style="color: #888;">Neredeyim?</small>
-                </div>
-                <div style="background: #222; padding: 10px; border-radius: 5px; text-align: center;">
-                    <code style="color: #ffbf00; font-size: 1.1em;">whoami</code><br>
-                    <small style="color: #888;">Kullanıcı Adım Ne?</small>
-                </div>
-            </div>
-            <p style="font-size: 0.85em; margin-top: 10px; color: #ccc; text-align: center;">
-                💡 <strong>Hedef Klasör:</strong> Genellikle <code>Desktop</code> (Masaüstü) kullanılır.<br>
-                <strong>Dikkat!</strong> Direkt ana dizine göndermeye çalışırsanız izin hatası alabilirsiniz.<br>
-                Aa dizine göndermeye çalışmak yerine <code>/Desktop</code> veya başka bir klasöt kullanın.<br>
-                Linux yolu örneği: <span style="font-family: Consolas, monospace; color: rgb(191, 0, 191);">/home/kullaniciadi/Desktop</span>
-            </p>
-        </div>
-
-        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--mac-color);">
-            <h3 style="margin-top: 0; color: var(--mac-color);">Senaryo 1: Mac ➔ Mac</h3>
-            
-            <p><strong>1. Alıcı Mac (Dosyayı Alacak Kişi):</strong></p>
-            <ul style="font-size: 0.9em; color: #ddd;">
-                <li>Ayarlar > Paylaşma > <strong>Uzaktan Oturum Açma</strong>'yı aç.</li>
-                <li>Terminal'e <code>ifconfig | grep "inet "</code> yaz, IP'ni öğren.</li>
-                <li><code>whoami</code> yaz, kullanıcı adını öğren.</li>
-            </ul>
-
-            <p><strong>2. Gönderici Mac (Dosyayı Atacak Kişi):</strong></p>
-            <div class="code-block">
-scp dosya.txt kaya@192.168.1.10:~/Desktop/
-            </div>
-        </div>
-
-        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--win-color);">
-            <h3 style="margin-top: 0; color: var(--win-color);">    Senaryo 2: Windows ➔ Windows</h3>
-            
-            <p><strong>1. Alıcı Windows:</strong></p>
-            <ul style="font-size: 0.9em; color: #ddd;">
-                <li>Ayarlar > İsteğe bağlı özellikler > <strong>OpenSSH Sunucusu</strong>'nu kur.</li>
-                <li>Hizmetler (Services) > <strong>OpenSSH SSH Server</strong> > Başlat.</li>
-                <li><code>ipconfig</code> ile Wi-Fi IP'sini öğren.</li>
-                <li><code>echo %USERNAME%</code> ile kullanıcı adını öğren.</li>
-            </ul>
-
-            <p><strong>2. Gönderici Windows (CMD):</strong></p>
-            <div class="code-block">
-scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
-            </div>
-            <strong>Dikkat! </strong>Windows'ta yol ayracı olarak ters eğik çizgi (\) yerine eğik çizgi (/) kullanılır.
-        </div>
-
-        <div style="margin-bottom: 20px; background-color: #252525; padding: 15px; border-radius: 8px; border-left: 5px solid var(--wsl-color);">
-            <h3 style="margin-top: 0; color: var(--wsl-color);">Senaryo 3:Linux (Terminal veya WSL) ➔ Windows</h3>
-            <p style="font-size: 0.9em; color: #ccc;">Linux terminalinden Windows bilgisayara dosya atmak için.</p>
-
-            <p><strong>1. Alıcı Windows:</strong></p>
-            <p style="font-size: 0.9em; color: #ddd;">Yukarıdaki "Senaryo 2"deki adımların aynısını yapar (SSH açar, IP ve Kullanıcı adını verir).</p>
-
-            <p><strong>2. Gönderici Linux:</strong></p>
-            <div class="code-block">
-            scp deneme.txt seher@192.168.1.12:C:/Users/seher/Desktop/
-            </div>
-        </div>
-        </div>
-
-        </div>
-
-
+        <br>
         <h3>2. Rsync (Remote Sync)</h3>
         <p>Sadece değişen dosyaları senkronize eder. Yedekleme için idealdir.</p>
         <div class="code-block">
@@ -638,8 +636,8 @@ scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
             rsync -avh ~/Belgeler/ kullanici@192.168.1.5:/yedek/Belgeler/ <br>
             echo "Yedekleme tamamlandı." <br>
         </div>
-    </div>
-
+    
+        <br>
         <details>
             <summary>Meraklısına otomatik Yedekleme Nasıl Yapılır?</summary>
             <div class="note-content">
@@ -699,9 +697,12 @@ scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
 
             </div>
         </details>
+        <br>
+        <br>
+
     
 
-    <div style="margin-top: 30px; margin-bottom: 20px;">
+        <div style="margin-top: 30px; margin-bottom: 20px;">
             <h3 style="text-align: center; color: var(--accent-color); margin-bottom: 15px;">SCP vs Rsync: Hangisini Seçmeli?</h3>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -751,7 +752,7 @@ scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
 
         </div>
 
-    <details>
+        <details>
             <summary style="color:red;">Olası Sorunlar ve Çözümler</summary>
             <div class="note-content">
                 <div class="trouble-box">
@@ -814,7 +815,7 @@ scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
 
             </div>
         </details>
-
+    </div>
 
     <div class="card">
         <h2>Zenity GUI ile Dosya Göndermek</h2>
@@ -894,20 +895,18 @@ scp dosya.txt seher@192.168.1.12:C:/Users/seher/Desktop/
         }
     </script>
 
-<div class="card" style="margin-top: 30px; border-top: 4px solid var(--accent);">
-                <h3>Eğer Takılığınız Bir Yer Varsa Bize Ulaşmaktan Çekinmeyin</h3>
-                <p>Bize Whatsapp üzerinden ulaşabilirsiniz</p>
+    <div class="card">
+                    <h3>Eğer Takılığınız Bir Yer Varsa Bize Ulaşmaktan Çekinmeyin</h3>
+                    <p>Bize Whatsapp üzerinden ulaşabilirsiniz</p>
+                </div>
             </div>
-        </div>
 
-    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.85em;">
-        <p style="margin-bottom: 5px;"><strong style="color: #888;">NEXUS Yazılım Geliştirme Ekibi</strong></p>
-        <p style="margin: 0;">Alanya Alaaddin Keykubat Üniversitesi</p>
-        <p style="margin-top: 15px; color: #444;">Linux Bootcamp 2025</p>
-    </footer>
+        <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.85em;">
+            <p style="margin-bottom: 5px;"><strong style="color: #888;">NEXUS Yazılım Geliştirme Ekibi</strong></p>
+            <p style="margin: 0;">Alanya Alaaddin Keykubat Üniversitesi</p>
+            <p style="margin-top: 15px; color: #444;">Linux Bootcamp 2025</p>
+        </footer>
 
-</div> </body>
-</html>
-    
+    </div> 
 </body>
 </html>
